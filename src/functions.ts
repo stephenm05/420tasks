@@ -32,7 +32,9 @@ export function shout(message: string): string {
  * mark. Do not use an `if` statement in solving this question.
  */
 export function isQuestion(message: string): boolean {
-    return true;
+    let questionMarkPos: number = message.lastIndexOf("?")
+    let lastIndex: number = message.length - 1
+    return (questionMarkPos === lastIndex && lastIndex >= 0);
 }
 
 /**
