@@ -1,3 +1,5 @@
+import { totalmem } from "os";
+
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -92,7 +94,9 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    const sum: number =
+        addends.reduce((total: number, addend: number): number => total+addend, 0);
+    return `${sum}=${addends.length > 0 ? addends.join("+") : "0"}`;
 }
 
 /**
