@@ -29,7 +29,9 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const intNums: number[] = 
+        numbers.map((num: string): number => /[^\d-]/.test(num) ? 0 : +num);
+    return intNums;
 }
 
 /**
@@ -90,5 +92,9 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
+    const negInd: number = values.findIndex(((value: number): boolean => value < 0));
+    const posSum: number =
+        values.reduce((sum: number, value: number, curInd: number): number => curInd < negInd ? sum+value : sum, 0);
+    const valsWithSum: number[] = values.toSpliced(negInd+1, 0, posSum);
     return [];
 }
