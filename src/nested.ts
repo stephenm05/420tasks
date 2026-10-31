@@ -138,5 +138,14 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    function spliceOptions(options: string[], optIndex: number, newOpt: string): string[] {
+        const splicedOptions: string[] = optIndex === -1 ?
+            options.toSpliced(options.length, 0, newOpt) :
+            options.toSpliced(optIndex, 1, newOpt);
+        return splicedOptions;
+    }
+    const editedQuestions: Question[] =
+        questions.map((question: Question): Question => ({...question, 
+            options: question.id === targetId ? spliceOptions(question.options, targetOptionIndex, newOption) : [...question.options]}));
+    return editedQuestions;
 }
