@@ -32,7 +32,9 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    return null;
+    let questionIndex: number =
+        questions.findIndex((question: Question): boolean => question.id === id);
+    return questionIndex === -1 ? null : questions[questionIndex];
 }
 
 /**
