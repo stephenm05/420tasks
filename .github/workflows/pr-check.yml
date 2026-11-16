@@ -1,0 +1,11 @@
+name: pr-check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main"]
+
+jobs:
+  deploy:
+    uses: ./deploy.yml
