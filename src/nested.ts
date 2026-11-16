@@ -139,9 +139,10 @@ export function editOption(
     newOption: string
 ): Question[] {
     function spliceOptions(options: string[], optIndex: number, newOpt: string): string[] {
-        const splicedOptions: string[] = optIndex === -1 ?
-            options.toSpliced(options.length, 0, newOpt) :
-            options.toSpliced(optIndex, 1, newOpt);
+        let splicedOptions: string[] = [...options];
+        optIndex === -1 ?
+            splicedOptions.splice(options.length, 0, newOpt) :
+            splicedOptions.splice(optIndex, 1, newOpt);
         return splicedOptions;
     }
     const editedQuestions: Question[] =

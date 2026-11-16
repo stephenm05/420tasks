@@ -113,6 +113,7 @@ export function injectPositive(values: number[]): number[] {
     negInd = negInd === -1 ? values.length : negInd;
     const posSum: number =
         values.reduce((sum: number, value: number, curInd: number): number => curInd < negInd ? sum+value : sum, 0);
-    const valsWithSum: number[] = values.toSpliced(negInd+1, 0, posSum);
+    let valsWithSum: number[] = [...values]
+    valsWithSum.splice(negInd+1, 0, posSum);
     return valsWithSum;
 }
